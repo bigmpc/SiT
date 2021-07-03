@@ -49,7 +49,7 @@ class STL10(torchvision.datasets.STL10):
         self.split = verify_str_arg(split, "split", self.splits)
         self.folds = self._verify_folds(folds)
 
-        if download:
+        if True:
             self.download()
         elif not self._check_integrity():
             raise RuntimeError(
