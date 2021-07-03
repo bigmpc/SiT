@@ -72,7 +72,8 @@ class SeniorAnn:
         else:  # self.split == 'test':
             self.data, self.labels = X_test, y_test
 
-       
+    def __len__(self):
+        return self.data.shape[0]
 
 
     def __getitem__(self, index: int) -> Tuple[Any, Any]:
