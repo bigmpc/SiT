@@ -128,7 +128,7 @@ def get_args_parser():
     parser.add_argument('--finetune', default='', help='finetune from checkpoint')
 
     # Dataset parameters
-    parser.add_argument('--data-set', default='CIFAR10', choices=['CIFAR100', 'CIFAR10', 'STL10', 'TinyImageNet'],
+    parser.add_argument('--data-set', default='CIFAR10', choices=['CIFAR100', 'CIFAR10', 'SeniorAnn', 'STL10', 'TinyImageNet'],
                         type=str, help='dataset name')    
     parser.add_argument('--dataset_location', default='downloaded_datasets', type=str, 
                         help='dataset location - dataset will be downloaded to this folder')   
