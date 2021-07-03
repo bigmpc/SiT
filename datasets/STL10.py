@@ -39,7 +39,7 @@ class STL10(torchvision.datasets.STL10):
             folds: Optional[int] = None,
             transform: Optional[Callable] = None,
             target_transform: Optional[Callable] = None,
-            download: bool = False, num_imgs_per_cat = None, training_mode = 'SSL'
+            download: bool = True, num_imgs_per_cat = None, training_mode = 'SSL'
     ) -> None:
         super(STL10, self).__init__(root, transform=transform,
                                     target_transform=target_transform)
