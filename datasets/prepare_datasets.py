@@ -8,7 +8,8 @@ from timm.data import create_transform
 from datasets.TinyImageNet import TinyImageNetDataset
 from datasets.CIFAR import CIFAR10, CIFAR100
 from datasets.STL10 import STL10
-    
+from datasets.SeniorAnn import SeniorAnn
+
 def build_dataset(is_train, args):
     transform = build_transform(is_train, args)
 
@@ -46,6 +47,15 @@ def build_dataset(is_train, args):
                           num_imgs_per_cat=args.num_imgs_per_cat,
                           training_mode = args.training_mode)
         nb_classes = 200
+
+    elif args.data_set == 'SeniorAnn':
+        mode = 'train' if is_train else 'val'
+
+        dataset = SeniorAnn( mode=mode, transform=transform,
+                                      num_imgs_per_cat=args.num_imgs_per_cat,
+                                      training_mode=args.training_mode)
+        nb_classes = 3
+
 
 
     return dataset, nb_classes
