@@ -51,7 +51,7 @@ def build_dataset(is_train, args):
     elif args.data_set == 'SeniorAnn':
         split = 'train+unlabeled' if args.training_mode == 'SSL' else 'train'
         split = split if is_train else 'test'
-        dataset = SeniorAnn(split=split, transform=transform,
+        dataset = SeniorAnn(root=os.path.join(args.dataset_location, 'SeniorAnn'), split=split, transform=transform,
                                       num_imgs_per_cat=args.num_imgs_per_cat,
                                       training_mode=args.training_mode)
         nb_classes = 3
