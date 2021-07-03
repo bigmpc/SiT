@@ -45,6 +45,9 @@ class SeniorAnn:
 
         X_train, X_valid, X_test, y_train, y_valid, y_test, classifiers = get_pickle(
             'SiT_labled.pickle')
+        y_train = y_train[:, 0]
+        y_test = y_test[:, 0]
+        
         X_unlabeled = get_pickle('SiT_unlabled.pickle')
 
         # now load the picked numpy arrays
