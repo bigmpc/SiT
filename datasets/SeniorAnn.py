@@ -60,13 +60,13 @@ class SeniorAnn:
         elif self.split == 'train+unlabeled':
             self.data, self.labels = X_train, y_train
             
-            unlabeled_data, _ = X_unlabeled
+            unlabeled_data = X_unlabeled
             self.data = np.concatenate((self.data, unlabeled_data))
             self.labels = np.concatenate(
                 (self.labels, np.asarray([-1] * unlabeled_data.shape[0])))
 
         elif self.split == 'unlabeled':
-            self.data, _ = X_unlabeled
+            self.data = X_unlabeled
             self.labels = np.asarray([-1] * self.data.shape[0])
 
         else:  # self.split == 'test':
