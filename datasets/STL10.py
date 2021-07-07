@@ -85,10 +85,12 @@ class STL10(torchvision.datasets.STL10):
             with open(class_file) as f:
                 self.classes = f.read().splitlines()
             
-        print("Dataset at STL10 Class")
-        print(type(self.data))
-        print("|***")
-        print(type(self.labels))
+        print("Dataset at STL10 Class:")
+        print(type(self.data))  # <class 'numpy.ndarray'>
+        print("first one:")
+        print(type(self.data[0]))
+        print("labels:")
+        print(type(self.labels))  # <class 'numpy.ndarray'>
         print("---")
 
     def _verify_folds(self, folds: Optional[int]) -> Optional[int]:

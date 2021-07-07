@@ -3,6 +3,7 @@ import numpy as np
 
 def RandomRotation(X, orientation=None):
     # generate random number between 0 and n_rot to represent the rotation
+    # X is type of <class 'PIL.Image.Image' >
     if orientation is None:
         orientation = np.random.randint(0, 4)
     
