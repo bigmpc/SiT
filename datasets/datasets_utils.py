@@ -5,7 +5,9 @@ def RandomRotation(X, orientation=None):
     # generate random number between 0 and n_rot to represent the rotation
     if orientation is None:
         orientation = np.random.randint(0, 4)
-    
+    print("Dataset at RandomRotation")
+    print(type(X))
+    print("---")
     if orientation == 0: # do nothing
         pass
     elif orientation == 1:  
