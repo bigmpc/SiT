@@ -87,8 +87,10 @@ class STL10(torchvision.datasets.STL10):
             
         print("Dataset at STL10 Class:")
         print(type(self.data))  # <class 'numpy.ndarray'>
+        print(self.data.dtype)  # <class 'numpy.ndarray'>
         print("first one:")
-        print(type(self.data[0]))
+        print(type(self.data[0]))  # <class 'numpy.ndarray'>
+        print(self.data[0].dtype)
         print("labels:")
         print(type(self.labels))  # <class 'numpy.ndarray'>
         print("---")
