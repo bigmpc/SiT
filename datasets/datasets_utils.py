@@ -37,7 +37,11 @@ def getItem(X, target = None, transform=None, training_mode = 'SSL'):
         if transform is not None:
             X = transform(X)
         return X, target
-        
+    print("At getItem function")
+    print(type(X))
+    print(type(X[1]))
+    print(X[1].format)
+    print(X.shape)
     X1, rot1 = RandomRotation(X)
     X2, rot2 = RandomRotation(X)
 
