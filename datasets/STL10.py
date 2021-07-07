@@ -55,7 +55,7 @@ class STL10(torchvision.datasets.STL10):
             raise RuntimeError(
                 'Dataset not found or corrupted. '
                 'You can use download=True to download it')
-
+        
         # now load the picked numpy arrays
         self.labels: Optional[np.ndarray]
         if self.split == 'train':
@@ -84,6 +84,12 @@ class STL10(torchvision.datasets.STL10):
         if os.path.isfile(class_file):
             with open(class_file) as f:
                 self.classes = f.read().splitlines()
+            
+        print("Dataset at STL10 Class")
+        print(type(self.data))
+        print("|***")
+        print(type(self.labels))
+        print("---")
 
     def _verify_folds(self, folds: Optional[int]) -> Optional[int]:
         if folds is None:
