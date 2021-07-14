@@ -51,11 +51,10 @@ class SeniorAnn:
         X_train, X_valid, X_test, y_train, y_valid, y_test, classifiers = get_pickle(
             'SiT_labled.pickle')
 
-        y_train = y_train[:, 0]
-        y_test = y_test[:, 0]
-        
         # https://stackoverflow.com/a/55272357/13286959
-        print('y_train and y_train converted')
+        y_train = y_train[:, 0] - 1
+        y_test = y_test[:, 0] - 1
+        
        
 
         X_unlabeled = get_pickle('SiT_unlabled.pickle')
