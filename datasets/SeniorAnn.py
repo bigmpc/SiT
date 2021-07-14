@@ -64,11 +64,13 @@ class SeniorAnn:
         self.labels: Optional[np.ndarray]
 
         if self.split == 'train':
-            self.data, self.labels = X_train, enc.transform(y_train)
+            self.data, self.labels = X_train, enc.transform(
+                y_train.reshape(-1, 1))
             
 
         elif self.split == 'train+unlabeled':
-            self.data, self.labels = X_train,  enc.transform(y_train)
+            self.data, self.labels = X_train,  enc.transform(
+                y_train.reshape(-1, 1))
             
             unlabeled_data = X_unlabeled
             self.data = np.concatenate((self.data, unlabeled_data))
@@ -80,7 +82,8 @@ class SeniorAnn:
             self.labels = np.asarray([-1] * self.data.shape[0])
 
         else:  # self.split == 'test':
-            self.data, self.labels = X_test,  enc.transform(y_test)
+            self.data, self.labels = X_test,  enc.transform(
+                y_test.reshape(-1, 1))
 
     def __len__(self):
         return self.data.shape[0]
