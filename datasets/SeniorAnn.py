@@ -56,7 +56,7 @@ class SeniorAnn:
         
         # https://stackoverflow.com/a/55272357/13286959
         print('y_train and y_train converted')
-        enc.fit(y_train)
+        enc.fit(y_train.reshape(-1, 1))
 
         X_unlabeled = get_pickle('SiT_unlabled.pickle')
 
@@ -64,13 +64,11 @@ class SeniorAnn:
         self.labels: Optional[np.ndarray]
 
         if self.split == 'train':
-            self.data, self.labels = X_train, enc.transform(
-                y_train).reshape(-1, 1)
+            self.data, self.labels = X_train, enc.transform(y_train)
             
 
         elif self.split == 'train+unlabeled':
-            self.data, self.labels = X_train,  enc.transform(
-                y_train).reshape(-1, 1)
+            self.data, self.labels = X_train,  enc.transform(y_train)
             
             unlabeled_data = X_unlabeled
             self.data = np.concatenate((self.data, unlabeled_data))
@@ -82,8 +80,7 @@ class SeniorAnn:
             self.labels = np.asarray([-1] * self.data.shape[0])
 
         else:  # self.split == 'test':
-            self.data, self.labels = X_test,  enc.transform(
-                y_test).reshape(-1, 1)
+            self.data, self.labels = X_test,  enc.transform(y_test)
 
     def __len__(self):
         return self.data.shape[0]
