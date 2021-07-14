@@ -84,7 +84,8 @@ class STL10(torchvision.datasets.STL10):
         if os.path.isfile(class_file):
             with open(class_file) as f:
                 self.classes = f.read().splitlines()
-            
+        
+        unique, counts = np.unique(self.labels, return_counts=True)
         print("Dataset at STL10 Class:")
         print(type(self.data))  # <class 'numpy.ndarray'>
         print(self.data.dtype)  # uint8
@@ -95,6 +96,8 @@ class STL10(torchvision.datasets.STL10):
         print("labels:")
         print(type(self.labels))  # <class 'numpy.ndarray'>
         print(self.labels.shape)
+        print('label value count')
+        print(unique, counts)
         print("---")
 
     def _verify_folds(self, folds: Optional[int]) -> Optional[int]:

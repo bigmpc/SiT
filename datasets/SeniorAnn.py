@@ -81,7 +81,8 @@ class SeniorAnn:
         else:  # self.split == 'test':
             self.data, self.labels = X_test,  y_test
 
-        print("Dataset at SeniorAnn Class:")
+        unique, counts = np.unique(self.labels, return_counts=True)
+        print("Dataset at STL10 Class:")
         print(type(self.data))  # <class 'numpy.ndarray'>
         print(self.data.dtype)  # uint8
         print(self.data.shape)  # (105000, 3, 96, 96)
@@ -91,6 +92,8 @@ class SeniorAnn:
         print("labels:")
         print(type(self.labels))  # <class 'numpy.ndarray'>
         print(self.labels.shape)
+        print('label value count')
+        print(unique, counts)
         print("---")
 
     def __len__(self):
