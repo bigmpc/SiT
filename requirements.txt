@@ -4,5 +4,4 @@ pandas
 imageio
 tabulate
 colorama
-
-
+scikit-learn
