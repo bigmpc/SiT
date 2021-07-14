@@ -56,7 +56,7 @@ class SeniorAnn:
         
         # https://stackoverflow.com/a/55272357/13286959
         print('y_train and y_train converted')
-        enc.fit(y_train.reshape(-1, 1))
+       
 
         X_unlabeled = get_pickle('SiT_unlabled.pickle')
 
@@ -64,13 +64,11 @@ class SeniorAnn:
         self.labels: Optional[np.ndarray]
 
         if self.split == 'train':
-            self.data, self.labels = X_train, enc.transform(
-                y_train.reshape(-1, 1))
+            self.data, self.labels = X_train, y_train
             
 
         elif self.split == 'train+unlabeled':
-            self.data, self.labels = X_train,  enc.transform(
-                y_train.reshape(-1, 1))
+            self.data, self.labels = X_train,  y_train
             
             unlabeled_data = X_unlabeled
             self.data = np.concatenate((self.data, unlabeled_data))
@@ -82,8 +80,19 @@ class SeniorAnn:
             self.labels = np.asarray([-1] * self.data.shape[0])
 
         else:  # self.split == 'test':
-            self.data, self.labels = X_test,  enc.transform(
-                y_test.reshape(-1, 1))
+            self.data, self.labels = X_test,  y_test
+
+        print("Dataset at SeniorAnn Class:")
+        print(type(self.data))  # <class 'numpy.ndarray'>
+        print(self.data.dtype)  # uint8
+        print(self.data.shape)  # (105000, 3, 96, 96)
+        print("first one:")
+        print(type(self.data[0]))  # <class 'numpy.ndarray'>
+        print(self.data[0].dtype)  # uint8
+        print("labels:")
+        print(type(self.labels))  # <class 'numpy.ndarray'>
+        print(self.labels.shape)
+        print("---")
 
     def __len__(self):
         return self.data.shape[0]
