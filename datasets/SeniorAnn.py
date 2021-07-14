@@ -13,6 +13,9 @@ from torchvision.datasets.utils import verify_str_arg
 from datasets.datasets_utils import getItem
 import pickle
 
+from sklearn.preprocessing import OrdinalEncoder
+enc = OrdinalEncoder()
+
 def put_pickle(data, file_path):
     with open(file_path, 'wb') as handle:
         pickle.dump(data, handle, protocol=pickle.HIGHEST_PROTOCOL)
@@ -43,10 +46,16 @@ class SeniorAnn:
         cwd = os.getcwd()
         print('cwd', cwd)
         self.split = split
+        
+        
         X_train, X_valid, X_test, y_train, y_valid, y_test, classifiers = get_pickle(
             'SiT_labled.pickle')
+
         y_train = y_train[:, 0]
         y_test = y_test[:, 0]
+        
+        print('y_train and y_train converted')
+        enc.fit(y_train)
 
         X_unlabeled = get_pickle('SiT_unlabled.pickle')
 
@@ -54,11 +63,11 @@ class SeniorAnn:
         self.labels: Optional[np.ndarray]
 
         if self.split == 'train':
-            self.data, self.labels = X_train, y_train
+            self.data, self.labels = X_train, enc.transform(y_train)
             
 
         elif self.split == 'train+unlabeled':
-            self.data, self.labels = X_train, y_train
+            self.data, self.labels = X_train,  enc.transform(y_train)
             
             unlabeled_data = X_unlabeled
             self.data = np.concatenate((self.data, unlabeled_data))
@@ -70,7 +79,7 @@ class SeniorAnn:
             self.labels = np.asarray([-1] * self.data.shape[0])
 
         else:  # self.split == 'test':
-            self.data, self.labels = X_test, y_test
+            self.data, self.labels = X_test,  enc.transform(y_test)
 
     def __len__(self):
         return self.data.shape[0]
