@@ -53,6 +53,9 @@ class SeniorAnn:
             'SiT_labled.pickle')
 
         # https://stackoverflow.com/a/55272357/13286959
+        all_index_types = ['ANB','SNB','SNA']
+        print('data column working on it')
+        print(all_index_types[index_of_dataset])
         y_train = y_train[:, index_of_dataset] - 1
         y_test = y_test[:, index_of_dataset] - 1
         y_valid = y_valid[:, index_of_dataset] - 1
