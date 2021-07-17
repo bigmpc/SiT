@@ -309,12 +309,12 @@ def evaluate_finetune(data_loader, model, device):
         with torch.cuda.amp.autocast():
             rot_p, contrastive_p = model(images)
             loss = criterion(rot_p, targets) + criterion(contrastive_p, targets)
-        print('check acc1,acc5 params')
+        # print('check acc1,acc5 params')
 
-        print('rot_p', rot_p.shape, 'contrastive_p',
-              contrastive_p.shape, 'targets', targets.shape)
+        # print('rot_p', rot_p.shape, 'contrastive_p',
+            #   contrastive_p.shape, 'targets', targets.shape)
         
-        print(' images.shape',  images.shape)
+        # print(' images.shape',  images.shape)
         #top five chanaged to top 3 but variable is same
         acc1, acc5 = accuracy((rot_p+contrastive_p)/2., targets, topk=(1, 3))
 
