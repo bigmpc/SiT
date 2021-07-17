@@ -82,7 +82,7 @@ class SeniorAnn:
             self.data, self.labels = np.concatenate((X_test, X_valid)),  np.concatenate((y_test, y_valid))
 
         unique, counts = np.unique(self.labels, return_counts=True)
-        print("Dataset at STL10 Class:")
+        print("Dataset at SeniorAnn Class:")
         print(type(self.data))  # <class 'numpy.ndarray'>
         print(self.data.dtype)  # uint8
         print(self.data.shape)  # (105000, 3, 96, 96)
