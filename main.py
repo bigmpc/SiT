@@ -362,6 +362,10 @@ def main(args):
                         'scaler': loss_scaler.state_dict(),
                         'args': args,
                     }, checkpoint_path)
+                    print('manual save')
+                    torch.save(model_without_ddp, [
+                               output_dir + '/full.pth'])
+
     
             if args.training_mode == 'SSL':
                 test_stats = evaluate_SSL(data_loader_val, model, device, epoch, args.output_dir)
