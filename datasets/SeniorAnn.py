@@ -36,6 +36,7 @@ class SeniorAnn:
             transform: Optional[Callable] = None,
             target_transform: Optional[Callable] = None,
             download: bool = False, num_imgs_per_cat=None, training_mode='SSL',
+            index_of_dataset = 0,
            
     ) -> None:
 
@@ -52,9 +53,9 @@ class SeniorAnn:
             'SiT_labled.pickle')
 
         # https://stackoverflow.com/a/55272357/13286959
-        y_train = y_train[:, 0] - 1
-        y_test = y_test[:, 0] - 1
-        y_valid = y_valid[:, 0] - 1
+        y_train = y_train[:, index_of_dataset] - 1
+        y_test = y_test[:, index_of_dataset] - 1
+        y_valid = y_valid[:, index_of_dataset] - 1
        
 
         X_unlabeled = get_pickle('SiT_unlabled.pickle')

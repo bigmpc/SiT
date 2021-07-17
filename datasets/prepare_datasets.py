@@ -53,7 +53,8 @@ def build_dataset(is_train, args):
         split = split if is_train else 'test'
         dataset = SeniorAnn(root=os.path.join(args.dataset_location, 'SeniorAnn'), split=split, transform=transform,
                                       num_imgs_per_cat=args.num_imgs_per_cat,
-                                      training_mode=args.training_mode)
+                                      training_mode=args.training_mode,
+                                      index_of_dataset = args.data_set_index)
         nb_classes = 3
 
 

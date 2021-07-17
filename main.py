@@ -130,6 +130,8 @@ def get_args_parser():
     # Dataset parameters
     parser.add_argument('--data-set', default='CIFAR10', choices=['CIFAR100', 'CIFAR10', 'SeniorAnn', 'STL10', 'TinyImageNet'],
                         type=str, help='dataset name')    
+    parser.add_argument('--data-set-index', default=0, choices=[0, 1, 2],
+                        type=int, help='dataset index for SeniorAnn')
     parser.add_argument('--dataset_location', default='downloaded_datasets', type=str, 
                         help='dataset location - dataset will be downloaded to this folder')   
     
