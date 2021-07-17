@@ -315,8 +315,8 @@ def evaluate_finetune(data_loader, model, device):
               contrastive_p.shape, 'targets', targets.shape)
         
         print(' images.shape',  images.shape)
-        
-        acc1, acc5 = accuracy((rot_p+contrastive_p)/2., targets, topk=(1, 5))
+        #top five chanaged to top 3 but variable is same
+        acc1, acc5 = accuracy((rot_p+contrastive_p)/2., targets, topk=(1, 3))
 
         batch_size = images.shape[0]
             
