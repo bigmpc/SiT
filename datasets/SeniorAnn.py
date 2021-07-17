@@ -54,7 +54,7 @@ class SeniorAnn:
         # https://stackoverflow.com/a/55272357/13286959
         y_train = y_train[:, 0] - 1
         y_test = y_test[:, 0] - 1
-        
+        y_valid = y_valid[:, 0] - 1
        
 
         X_unlabeled = get_pickle('SiT_unlabled.pickle')
@@ -79,7 +79,7 @@ class SeniorAnn:
             self.labels = np.asarray([-1] * self.data.shape[0])
 
         else:  # self.split == 'test':
-            self.data, self.labels = X_test,  y_test
+            self.data, self.labels = np.concatenate((X_test, X_valid)),  np.concatenate((y_test, y_valid))
 
         unique, counts = np.unique(self.labels, return_counts=True)
         print("Dataset at STL10 Class:")
