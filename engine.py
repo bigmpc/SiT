@@ -312,7 +312,7 @@ def evaluate_finetune(data_loader, model, device):
         print('check acc1,acc5 params')
 
         print('rot_p', rot_p.shape, 'contrastive_p',
-              contrastive_p.shape, 'targets', targets)
+              contrastive_p.shape, 'targets', targets.shape)
         
         print(' images.shape',  images.shape)
         
