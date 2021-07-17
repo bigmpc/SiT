@@ -309,7 +309,9 @@ def evaluate_finetune(data_loader, model, device):
         with torch.cuda.amp.autocast():
             rot_p, contrastive_p = model(images)
             loss = criterion(rot_p, targets) + criterion(contrastive_p, targets)
-
+        print('check acc1,acc5 params')
+        print('rot_p', rot_p, 'contrastive_p', contrastive_p, 'targets', targets)
+        print(' images.shape[0]',  images.shape[0])
         acc1, acc5 = accuracy((rot_p+contrastive_p)/2., targets, topk=(1, 5))
 
         batch_size = images.shape[0]
