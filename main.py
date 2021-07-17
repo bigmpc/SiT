@@ -362,7 +362,7 @@ def main(args):
                     #     'scaler': loss_scaler.state_dict(),
                     #     'args': args,
                     # }, checkpoint_path)
-                save_model_path = output_dir + '/full.pth'
+                save_model_path = 'checkpoints/finetune/SeniorAnn/checkpoint.pth'
                 print('manual  full model save save at', save_model_path)
                 torch.save(model_without_ddp, 
                            save_model_path)
