@@ -351,20 +351,21 @@ def main(args):
             
         if epoch%args.validate_every == 0:
             if args.output_dir:
-                checkpoint_paths = [output_dir / 'checkpoint.pth']
-                for checkpoint_path in checkpoint_paths:
-                    utils.save_on_master({
-                        'model': model_without_ddp.state_dict(),
-                        'optimizer': optimizer.state_dict(),
-                        'lr_scheduler': lr_scheduler.state_dict(),
-                        'epoch': epoch,
-                        'model_ema': get_state_dict(model_ema),
-                        'scaler': loss_scaler.state_dict(),
-                        'args': args,
-                    }, checkpoint_path)
-                    print('manual save')
-                    torch.save(model_without_ddp, [
-                               output_dir + '/full.pth'])
+                # checkpoint_paths = [output_dir / 'checkpoint.pth']
+                # for checkpoint_path in checkpoint_paths:
+                    # utils.save_on_master({
+                    #     'model': model_without_ddp.state_dict(),
+                    #     'optimizer': optimizer.state_dict(),
+                    #     'lr_scheduler': lr_scheduler.state_dict(),
+                    #     'epoch': epoch,
+                    #     'model_ema': get_state_dict(model_ema),
+                    #     'scaler': loss_scaler.state_dict(),
+                    #     'args': args,
+                    # }, checkpoint_path)
+                save_model_path = output_dir + '/full.pth'
+                print('manual  full model save save at', save_model_path)
+                torch.save(model_without_ddp, 
+                           save_model_path)
 
     
             if args.training_mode == 'SSL':
