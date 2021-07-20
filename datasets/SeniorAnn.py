@@ -114,6 +114,6 @@ class SeniorAnn:
 
         # doing this so that it is consistent with all other datasets
         # to return a PIL Image
-        img = Image.fromarray(np.transpose(img, (1, 2, 0)))
+        img = Image.fromarray(img.reshape(256, 256, -1))
 
         return getItem(img, target, self.transform, self.training_mode)
